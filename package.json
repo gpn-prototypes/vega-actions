@@ -5,6 +5,9 @@
     "update-changelog",
     "generate-gh-release"
   ],
+  "scripts": {
+    "build": "node build.js"
+  },
   "devDependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^3.0.0",
@@ -12,6 +15,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
     "ini": "1.3.5",
+    "@zeit/ncc": "^0.22.3",
     "jest": "^25.1.0",
     "prettier": "^2.0.5"
   }
