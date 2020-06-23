@@ -40,8 +40,10 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(552);
+/******/ 		return __webpack_require__(944);
 /******/ 	};
+/******/ 	// initialize runtime
+/******/ 	runtime(__webpack_require__);
 /******/
 /******/ 	// run startup
 /******/ 	return startup();
@@ -384,37 +386,6 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 552:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
-
-
-const fs = __webpack_require__(747).promises;
-const path = __webpack_require__(622);
-
-const INSERTION_POINT = "<!-- insert-new-changelog-here -->";
-const CHANGELOG_PATH = path.resolve(process.env.GITHUB_WORKSPACE, "CHANGELOG.md");
-
-async function main() {
-  const changelog = await fs.readFile(CHANGELOG_PATH, "utf8");
-  if (!changelog.includes(INSERTION_POINT)) {
-    throw new Error(`Missing "${INSERTION_POINT}" in CHANGELOG.md`);
-  }
-  const core = __webpack_require__(470);
-  
-  let newChangelog = core.getInput("changelog", { required: true });
-  newChangelog = JSON.parse(newChangelog);
-  newChangelog = changelog.replace(INSERTION_POINT, INSERTION_POINT + "\n" + newChangelog);
-
-  await fs.writeFile(CHANGELOG_PATH, newChangelog);
-}
-
-main().catch(e => {
-  process.exitCode = 1;
-  throw e;
-});
-
-/***/ }),
-
 /***/ 622:
 /***/ (function(module) {
 
@@ -427,6 +398,90 @@ module.exports = require("path");
 
 module.exports = require("fs");
 
+/***/ }),
+
+/***/ 944:
+/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(747);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(622);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(470);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_2__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+const INSERTION_POINT = '<!-- insert-new-changelog-here -->';
+const CHANGELOG_PATH = path__WEBPACK_IMPORTED_MODULE_1__.resolve(process.env.GITHUB_WORKSPACE, 'CHANGELOG.md');
+function main() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const changelog = fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(CHANGELOG_PATH, 'utf8');
+        if (!changelog.includes(INSERTION_POINT)) {
+            throw new Error(`Missing "${INSERTION_POINT}" in CHANGELOG.md`);
+        }
+        let newChangelog = _actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput('changelog', { required: true });
+        newChangelog = JSON.parse(newChangelog);
+        newChangelog = changelog.replace(INSERTION_POINT, `${INSERTION_POINT}\n${newChangelog}`);
+        fs__WEBPACK_IMPORTED_MODULE_0__.writeFileSync(CHANGELOG_PATH, newChangelog);
+    });
+}
+main().catch((e) => {
+    process.exitCode = 1;
+    throw e;
+});
+
+
 /***/ })
 
-/******/ });
+/******/ },
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ 	"use strict";
+/******/ 
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function getDefault() { return module['default']; } :
+/******/ 				function getModuleExports() { return module; };
+/******/ 			__webpack_require__.d(getter, 'a', getter);
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getter */
+/******/ 	!function() {
+/******/ 		// define getter function for harmony exports
+/******/ 		var hasOwnProperty = Object.prototype.hasOwnProperty;
+/******/ 		__webpack_require__.d = function(exports, name, getter) {
+/******/ 			if(!hasOwnProperty.call(exports, name)) {
+/******/ 				Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ }
+);

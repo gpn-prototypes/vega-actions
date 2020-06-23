@@ -40,8 +40,10 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(473);
+/******/ 		return __webpack_require__(219);
 /******/ 	};
+/******/ 	// initialize runtime
+/******/ 	runtime(__webpack_require__);
 /******/
 /******/ 	// run startup
 /******/ 	return startup();
@@ -60,6 +62,28 @@ module.exports = require("os");
 /***/ (function(module) {
 
 module.exports = require("child_process");
+
+/***/ }),
+
+/***/ 219:
+/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(129);
+/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(child_process__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(622);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(470);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const lernaChangelog = path__WEBPACK_IMPORTED_MODULE_1__.resolve('node_modules/@gpn-prototypes/vega-changelog/bin/cli.js');
+const exec = (cmd) => child_process__WEBPACK_IMPORTED_MODULE_0__.execSync(cmd).toString();
+const changelog = exec(`node ${lernaChangelog}`);
+_actions_core__WEBPACK_IMPORTED_MODULE_2__.setOutput('changelog', JSON.stringify(changelog));
+
 
 /***/ }),
 
@@ -391,22 +415,6 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 473:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
-
-const cp = __webpack_require__(129);
-const path = __webpack_require__(622);
-const core = __webpack_require__(470);
-const lernaChangelog = path.resolve("node_modules/@gpn-prototypes/vega-changelog/bin/cli.js");
-
-const exec = cmd => cp.execSync(cmd).toString();
-
-const changelog = exec(`node ${lernaChangelog}`);
-
-core.setOutput("changelog", JSON.stringify(changelog));
-
-/***/ }),
-
 /***/ 622:
 /***/ (function(module) {
 
@@ -414,4 +422,43 @@ module.exports = require("path");
 
 /***/ })
 
-/******/ });
+/******/ },
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ 	"use strict";
+/******/ 
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function getDefault() { return module['default']; } :
+/******/ 				function getModuleExports() { return module; };
+/******/ 			__webpack_require__.d(getter, 'a', getter);
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getter */
+/******/ 	!function() {
+/******/ 		// define getter function for harmony exports
+/******/ 		var hasOwnProperty = Object.prototype.hasOwnProperty;
+/******/ 		__webpack_require__.d = function(exports, name, getter) {
+/******/ 			if(!hasOwnProperty.call(exports, name)) {
+/******/ 				Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ }
+);
