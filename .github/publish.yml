@@ -1,0 +1,47 @@
+name: Публикация новой версии
+on:
+  push:
+
+jobs:
+  build:
+    name: Сборка
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: docker://quay.csssr.cloud/csssr/github-info:v1
+        id: gh
+        
+      - name: Скачивание репозитория
+        uses: actions/checkout@v2
+        if: "!contains(github.event.head_commit.message, '[skip ci]')"
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: refs/heads/${{ steps.gh.outputs.branch }}
+
+      - name: Скачивание всей git-истории (чтобы работал from-git)
+        run: git fetch --prune --unshallow
+
+      - name: Установка ноды
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Установка зависимостей
+        run: yarn install --frozen-lockfile
+
+      - name: Сборка пакетов
+        run: yarn build
+
+      - name: Настройка git
+        run: |
+          git config --local user.name "GitHub Workflow"
+          git config --local user.email "workflow@github.com"
+
+      - name: Публикация на github
+        run: |
+          git add .
+          git commit -m "chore(build): новые версии экшенов [skip ci]"
+          git push
+
+
