@@ -61,7 +61,8 @@ module.exports = require("child_process");
 
 const cp = __webpack_require__(129);
 const exec = (command) => cp.execSync(command).toString();
-exec('git status');
+// eslint-disable-next-line no-console
+console.log(exec('git status'));
 
 
 /***/ })
