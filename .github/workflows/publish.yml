@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: docker://quay.csssr.cloud/csssr/github-info:v1
         id: gh
-        
+
       - name: Скачивание репозитория
         uses: actions/checkout@v2
         if: "!contains(github.event.head_commit.message, '[skip ci]')"
@@ -29,6 +29,8 @@ jobs:
 
       - name: Установка зависимостей
         run: yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Сборка пакетов
         run: yarn build
