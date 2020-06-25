@@ -3,7 +3,8 @@
   "workspaces": [
     "generate-changelog",
     "update-changelog",
-    "generate-gh-release"
+    "generate-gh-release",
+    "release-lerna-packages"
   ],
   "scripts": {
     "build": "node build.js",
