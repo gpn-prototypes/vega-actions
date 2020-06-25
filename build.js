@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const exec = (command) => cp.execSync(command).toString();
 
-const ignoreDirs = ['.git', 'node_modules'];
+const ignoreDirs = ['.git', 'node_modules', '.github'];
 
 const isDirectory = (source) => fs.lstatSync(source).isDirectory();
 const getDirectories = (source) =>
