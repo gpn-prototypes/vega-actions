@@ -1,0 +1,6 @@
+
+name: Release package
+description: Updates the CHANGELOG.md file with the contents provided as input
+runs:
+  using: node12
+  main: dist/index.js
