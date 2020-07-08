@@ -44,6 +44,6 @@ jobs:
         run: |
           git add .
           git commit -m "chore(build): новые версии экшенов [skip ci]"
-          git push
+          git push origin ${{ steps.gh.outputs.branch }}
 
 
