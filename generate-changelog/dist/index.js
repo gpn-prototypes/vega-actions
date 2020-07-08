@@ -79,9 +79,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const lernaChangelog = path__WEBPACK_IMPORTED_MODULE_1__.resolve('node_modules/@gpn-prototypes/vega-changelog/bin/cli.js');
+const changelogPath = path__WEBPACK_IMPORTED_MODULE_1__.resolve('node_modules/@gpn-prototypes/vega-changelog/bin/cli.js');
 const exec = (cmd) => child_process__WEBPACK_IMPORTED_MODULE_0__.execSync(cmd).toString();
-const changelog = exec(`node ${lernaChangelog}`);
+const changelog = exec(`node ${changelogPath}`);
 _actions_core__WEBPACK_IMPORTED_MODULE_2__.setOutput('changelog', JSON.stringify(changelog));
 
 
