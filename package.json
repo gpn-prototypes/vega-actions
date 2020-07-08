@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "workspaces": [
+    "generate-changelog",
+    "update-changelog",
+    "generate-gh-release",
+    "release-lerna-packages"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "prettier": "prettier --write ./**/*.{ts,tsx,css,js,jsx}",
+    "lint:ts": "eslint --ext=.ts,.tsx .",
+    "lint:ts:fix": "eslint --ext=.ts,.tsx . --fix",
+    "lint:md": "remark . -o",
+    "lint": "yarn run lint:ts && yarn run lint:md",
+    "lint:fix": "yarn run lint:ts:fix && yarn run lint:md"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./node_modules/@gpn-prototypes/frontend-configs/git/commitizen.js"
+    }
+  },
+  "devDependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^3.0.0",
+    "ini": "1.3.5",
+    "@zeit/ncc": "^0.22.3",
+    "jest": "^25.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "commitizen": "^4.1.2",
+    "cz-customizable": "^6.2.0",
+    "@gpn-prototypes/frontend-configs": "^0.1.1",
+    "remark": "^12.0.0",
+    "prettier": "^2.0.5"
+  }
+}

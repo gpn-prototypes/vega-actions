@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "release-lerna-packages",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.1.0"
+  }
+}

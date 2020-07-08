@@ -1,0 +1,14 @@
+name: Generate changelog
+description: Uses lerna-changelog to generate the changelog from a tag to another
+
+outputs:
+  changelog:
+    description: The new changelog, formatted as a JSON string
+
+runs:
+  using: node12
+  main: dist/index.js
+
+branding:
+  icon: clock
+  color: yellow
