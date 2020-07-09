@@ -1,0 +1,15 @@
+name: Generate changelog
+description: Uses lerna-changelog to generate the changelog from a tag to another
+
+inputs:
+  repo-token:
+    description: Repository token from github
+    required: true
+
+runs:
+  using: node12
+  main: dist/index.js
+
+branding:
+  icon: clock
+  color: yellow

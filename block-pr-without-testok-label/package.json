@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "block-pr-without-testok",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.1.0",
+    "@actions/github": "^4.0.0"
+  },
+  "devDependencies": {
+    "@octokit/types": "^5.0.1"
+  }
+}
