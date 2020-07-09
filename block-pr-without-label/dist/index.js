@@ -40,7 +40,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(517);
+/******/ 		return __webpack_require__(949);
 /******/ 	};
 /******/ 	// initialize runtime
 /******/ 	runtime(__webpack_require__);
@@ -5902,49 +5902,6 @@ function addHook (state, kind, name, hook) {
 
 /***/ }),
 
-/***/ 517:
-/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(470);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(469);
-/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_actions_github__WEBPACK_IMPORTED_MODULE_1__);
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-const { getOctokit, context } = _actions_github__WEBPACK_IMPORTED_MODULE_1__;
-const getCurrentPr = () => __awaiter(void 0, void 0, void 0, function* () {
-    const repoToken = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('repo_token', { required: true });
-    const client = getOctokit(repoToken);
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    const currentPr = yield client.pulls.get(Object.assign(Object.assign({}, context.repo), { pull_number: context.issue.number }));
-    return currentPr.data;
-});
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const necessaryLabel = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('necessary_label', { required: true });
-        const currentPr = yield getCurrentPr();
-        const hasNecessaryLabel = currentPr.labels.some((label) => label.name === necessaryLabel);
-        if (!hasNecessaryLabel) {
-            _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`Label "${necessaryLabel}" not found in this pr`);
-        }
-    });
-}
-main();
-
-
-/***/ }),
-
 /***/ 521:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -9604,6 +9561,42 @@ module.exports = function(fn) {
 	try { return fn() } catch (e) {}
 
 }
+
+/***/ }),
+
+/***/ 949:
+/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(470);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(469);
+/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_actions_github__WEBPACK_IMPORTED_MODULE_1__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+const { getOctokit, context } = _actions_github__WEBPACK_IMPORTED_MODULE_1__;
+const getCurrentPr = () => __awaiter(void 0, void 0, void 0, function* () {
+    const repoToken = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('repo_token', { required: true });
+    const client = getOctokit(repoToken);
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    const currentPr = yield client.pulls.get(Object.assign(Object.assign({}, context.repo), { pull_number: context.issue.number }));
+    return currentPr.data;
+});
+getCurrentPr().then((currentPr) => {
+    const { labels } = currentPr;
+    console.log(labels);
+});
+
 
 /***/ }),
 
