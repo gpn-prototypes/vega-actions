@@ -12,8 +12,13 @@ const getCurrentPr = async (): Promise<PullsGetResponseData> => {
   return currentPr.data;
 };
 
-getCurrentPr().then((currentPr) => {
-  const { labels } = currentPr;
+async function main(): Promise<void> {
+  const necessaryLabel = core.getInput('necessary_label', { required: true });
+  const currentPr = await getCurrentPr();
+  const hasNecessaryLabel = currentPr.labels.some((label) => label.name === necessaryLabel);
+  if (!hasNecessaryLabel) {
+    core.setFailed(`Label "${necessaryLabel}" not found in this pr`);
+  }
+}
 
-  console.log(labels);
-});
+main();
