@@ -2,8 +2,11 @@ name: Generate changelog
 description: Uses lerna-changelog to generate the changelog from a tag to another
 
 inputs:
-  repo-token:
+  repo_token:
     description: Repository token from github
+    required: true
+  necessary_label:
+    description: Label when block pr merging
     required: true
 
 runs:

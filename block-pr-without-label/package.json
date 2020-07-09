@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "block-pr-without-testok",
+  "name": "block-pr-without-label",
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
