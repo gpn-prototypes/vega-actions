@@ -1,9 +1,9 @@
-name: Generate changelog
-description: Uses lerna-changelog to generate the changelog from a tag to another
+name: Генерация CHANGELOG
+description: Использует vega-changelog для генерации логов по PR
 
 outputs:
   changelog:
-    description: The new changelog, formatted as a JSON string
+    description: Новый changelog, форматированный в JSON-строку
 
 runs:
   using: node12

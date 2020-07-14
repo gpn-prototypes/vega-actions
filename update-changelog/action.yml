@@ -1,10 +1,10 @@
 
 name: Update changelog
-description: Updates the CHANGELOG.md file with the contents provided as input
+description: Обновляет CHANGELOG.md файл с контентом, переданным во входных параметрах
 
 inputs:
   changelog:
-    description: The new changelog
+    description: Новый CHANGELOG
     required: true
 
 runs:
