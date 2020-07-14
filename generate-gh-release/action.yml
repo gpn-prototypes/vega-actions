@@ -1,18 +1,18 @@
-name: Publish GitHub release
-description: Publishes a new release on GitHub, with the given changelog and tag
+name: Публикация Github-релиза
+description: Публикует новый релиз на github с тегом и CHANGELOG
 
 inputs:
   tag:
-    description: The tag name
+    description: Имя тега
     required: true
   main_package:
-    description: Main package name
+    description: Название основного пакета
     required: true
   changelog:
-    description: The new changelog
+    description: Новый CHANGELOG
     required: true
   token:
-    description: A GitHub access token
+    description: Токен доступа к репозиторию
     required: true
 
 runs:

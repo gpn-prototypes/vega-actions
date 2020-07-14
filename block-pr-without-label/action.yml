@@ -1,12 +1,12 @@
-name: Generate changelog
-description: Uses lerna-changelog to generate the changelog from a tag to another
+name: Block PR without label
+description: Блокирование мерджа PR, если у него не стоит необходимого лейбла
 
 inputs:
   repo_token:
-    description: Repository token from github
+    description: Токен для gh репозитория
     required: true
   necessary_label:
-    description: Label when block pr merging
+    description: Лейбл, отсутствие которого блокирует мердж PR
     required: true
 
 runs:

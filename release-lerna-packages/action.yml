@@ -1,17 +1,17 @@
 
-name: Release package
-description: Release lerna packages to gh registry
+name: Релиз пакетов
+description: Релиз пакетов из монорепозитории в npm-gh-registry
 
 inputs:
   branch:
-    description: github branch name
+    description: Имя текущей веткп
     required: true
   main_branch:
-    description: github main branch
+    description: Имя основной ветки
   gh_user:
-    description: github user
+    description: Имя пользователя на github
   gh_email:
-    description: github email
+    description: Почта на github
 
 runs:
   using: node12
