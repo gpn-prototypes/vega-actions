@@ -1133,10 +1133,10 @@
   resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-9.0.1.tgz#df281f0f3d8f3adb10c95e4dd72b16acf41b5400"
   integrity sha512-wo2rHprtDzTHf4tiSxavktJ52ntiwmg7eHNGFLH38G1of8OfGVwOc1sVbpM4jN/HK/rCMhYOi6xzoPqsv0537A==
 
-"@gpn-prototypes/frontend-configs@^0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@gpn-prototypes/frontend-configs/0.1.1/e8ec71769f9ac357be8dc828859cd800e728f2710ef1e94e298731536d24c64b#44ee95bc807c442f7833ac9b111fba8cbbdc06e7"
-  integrity sha512-PnP9ufNm7U+0C8XMs11FO9QUrYHZE1UvDBvCKuA5qSjvAa4LOCDrpG3kKeV+rNl7bz1Rt1YlC6TyllodMx3OJA==
+"@gpn-prototypes/frontend-configs@^1.0.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@gpn-prototypes/frontend-configs/1.1.0/34d22685d043545461dbfc952ff89c09c702e93802d55a82675e9f8b7c0bfe26#38b1eb365b403c6e0c7a8375da77161ec27ecf67"
+  integrity sha512-uJ6YX0xWY6AeD188YWe5w19aF3dJ/PYuPW6FQBQe96m4Q5rurLZxdkCq96pTNE0wXxSJmiqW11/v32O5NjsTwQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-transform-runtime" "^7.10.1"
