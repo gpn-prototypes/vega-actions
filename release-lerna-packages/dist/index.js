@@ -421,8 +421,8 @@ const gitConfig = () => {
 };
 const lernaVersion = () => {
     const baseLernaCommand = `yarn lerna version --conventional-commits --allow-branch=${branch} --no-commit-hooks --no-push --yes`;
-    const versionParam = `--conventional-${isMainBranch ? 'graduate' : 'prerelease'}`;
-    exec(`${baseLernaCommand} ${versionParam}`);
+    // const versionParam = `--conventional-${isMainBranch ? 'graduate' : 'prerelease'}`;
+    exec(`${baseLernaCommand}`);
 };
 const lernaPublish = () => {
     exec('yarn lerna publish from-package --yes');
